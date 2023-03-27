@@ -13,3 +13,7 @@ class TestCalculator:
     def test_subtract(self):
         ans = calculator.minus(4, 2)
         assert ans == 2
+
+    def test_multiply(self):
+        ans = calculator.multiply(3, 2)
+        assert ans == 6
