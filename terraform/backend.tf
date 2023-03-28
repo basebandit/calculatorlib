@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "basebandit-app"
+    bucket = "calc-app"
     region = "us-east-1"
     key    = "jenkins-server/terraform.tfstate"
   }
