@@ -1,6 +1,17 @@
 .idea/
 .vscode/
 .pytest_cache/
+
+# local .terraform dir
+**/.terraform/*
+
+# lock file
+.terraform.*
+
+# tf state files
+*.tfstate
+*.tfstate.*
+
 .coverage
 __pycache__
 venv/
