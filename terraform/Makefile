@@ -15,3 +15,14 @@ plan:
 
 apply:
 	terraform apply calcapp.tfplan
+
+delete-bucket:
+	aws s3api delete-objects --bucket ${BUCKET} --delete "$$(aws s3api list-object-versions --bucket "${BUCKET}" --output=json --query='{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
+	aws s3 rb s3://${BUCKET}
+# aws s3 rm s3://${BUCKET} --recursive
+
+destroy:
+	terraform state rm 'aws_s3_bucket.tfstate_bucket'
+	terraform plan -destroy -out=calcapp.tfdestroy
+	terraform apply calcapp.tfdestroy
+	delete-bucket
